@@ -1,0 +1,15 @@
+extends layout
+block content
+  div(id="wrap")
+    h1 My First WebSite
+    p Welcome to my website! Here are some things I enjoy.
+    div(class = 'main-section')
+      ul
+        li Web Development
+        li Chess
+        li Reading
+        li Learning -2
+      div(class = 'favorites-section')
+        h2 Favorite Quotes
+        each quote, i in quotes
+          blockquote #{quote}

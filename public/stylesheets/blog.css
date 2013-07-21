@@ -1,8 +1,10 @@
 body {
+  background-color: red;
   width: 600px;
   margin: 20px auto;
   font-family: sans-serif;
 }
+
 article img {
   float: left;
   margin-right: 30px;
@@ -12,6 +14,8 @@ article h2 {
   line-height: 1em;
   margin-top: 0;
 }
+
+
 .preview {
   float: right;
   width: 470px;

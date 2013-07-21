@@ -26,7 +26,6 @@
         <label>Type</label>
           <span>{{Entity.Type.Text}}</span>
     </div>
-
     <div>
         <button ng-click="startEditing()">Edit</button>
     </div>
@@ -44,7 +43,8 @@
        
         <div>
             <label>Type</label>
-            <select kendo-drop-down-list k-data-source="AvailableTypes" ng-model="EditEntity.Type" k-data-value-field="'Id'" k-data-text-field="'Text'"/>
+             <select kendo-drop-down-list k-data-source="AvailableTypes" ng-model="EditEntity.Type" k-data-value-field="'Id'" k-data-text-field="'Text'">
+              </select>
 
         </div>
              <button ng-click="save()">Save</button>

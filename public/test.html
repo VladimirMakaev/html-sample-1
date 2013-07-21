@@ -43,7 +43,7 @@
        
         <div>
             <label>Type</label>
-             <select kendo-drop-down-list k-data-source="AvailableTypes" ng-model="EditEntity.Type" k-data-value-field="'Id'" k-data-text-field="'Text'">
+             <select kendo-drop-down-list k-data-source="AvailableTypes" ng-model="EditEntity.Type.Id" k-data-value-field="'Id'" k-data-text-field="'Text'" k-on-change="selected(kendoEvent)">
               </select>
 
         </div>
@@ -59,7 +59,7 @@
                <script type="text/javascript">
             var app = angular.module('kendo-test', ['kendo.directives']);
 
-            function MainCtrl($scope) {
+            function MainCtrl($scope, $log) {
                 $scope.Entity = {
                     Id: 1,
                     Title: "My Title",
@@ -78,8 +78,13 @@
                     }]
                 });
 
+                $scope.selected = function(e){
+                    $log.info(e);
+                    $scope.EditEntity.Type.Text = e.sender.text();
+                }
+
                 $scope.save = function(){
-                    $scope.Entity = $.extend($scope.Entity, $scope.EditEntity);
+                    $scope.Entity = $.extend(true,$scope.Entity, $scope.EditEntity);
                     $scope.EditEntity = undefined;
                     $scope.editWindow.close();
                 };
@@ -90,7 +95,7 @@
                 };
 
                 $scope.startEditing = function(){
-                    $scope.EditEntity = $.extend({}, $scope.Entity);
+                    $scope.EditEntity = $.extend(true, {}, $scope.Entity);
                     $scope.editWindow.open();
                     $scope.editWindow.center();
                 };
